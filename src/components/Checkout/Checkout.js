@@ -25,12 +25,7 @@ const Checkout = () => {
              },
              body: JSON.stringify(orderDetails)
          })
-         .then(res=>res.json())
-         .then(data=>{             
-             if(data){
-                history.push(`/orders`);             
-            }
-         })
+         history.push(`/orders`);
      };
      
     return (

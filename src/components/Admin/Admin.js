@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import Input from "@material-ui/core/Input";
+import './Admin.css'
 
 const Admin = () => {
     const [products, setProducts] = useState([]);
@@ -55,9 +56,9 @@ const Admin = () => {
         <div className="container">
             <div className="row">
                 <div className="col-3 bg-info p-3 text-white">
-                    <p>Manage Phone Items</p>
-                    <p>Add New Phone</p>
-                    <p>Edit Existing Phone</p>
+                    
+                    <button class="text-white ml-4 mt-3 py-2 text-size bg-danger">Add New Item</button>
+                    
                 </div>
                 <div className="col-9 bg-light">
                     <div className="row mb-3 p-3"><h5>Add New Phone</h5></div>
