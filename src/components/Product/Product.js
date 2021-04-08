@@ -16,7 +16,7 @@ const Product = (props) => {
                 <img src={imageUrl} class="card-img-top img-thumbnail rounded" alt="..."/>
                     <div class="card-body">
                         <h5 class="card-title">{name}</h5>
-                        <p class="card-text">{model}</p>
+                        <p class="card-text text-primary fw-bolder fs-1">{model}</p>
                         <div className="d-flex justify-content-between"> 
                         <h5 class="card-title">${price}</h5>
                         <button onClick={()=>handleBuy(price)} class="btn btn-primary">Buy Now</button>
