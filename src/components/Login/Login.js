@@ -1,11 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { useForm } from "react-hook-form";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from './firebase.config';
 import './Login.css';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
 
 

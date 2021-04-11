@@ -1,30 +1,32 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Redirect, useHistory, useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { UserContext } from '../../App';
 
 const Checkout = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext); 
-    const {price} = useParams();   
-
-    const [products, setProducts] = useState([]);
+    const {id} = useParams();   
+    const [product, setProduct] = useState([]);
     const history = useHistory();
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/product/${price}`)
-        .then(res=>res.json())
-        .then(data=>setProducts(data))
-    }, [products])
+        const url = `https://still-chamber-54706.herokuapp.com/checkout/${id}`; 
+        console.log(url);
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setProduct(data))
+    }, [])
 
-    const handleCheckout = (price) => {
-        const orderDetails = {...loggedInUser, name: products.name, model: products.model, price: products.price, orderTime: new Date()};        
+
+    const handleCheckout = (id) => {
+        const orderDetails = {...loggedInUser, name: product.name, model: product.model, price: product.price, orderTime: new Date()};        
         
-         fetch(`http://localhost:5000/addOrder`,{
+         fetch(`https://still-chamber-54706.herokuapp.com/addOrder`,{
              method: 'POST',
              headers: {
                  'Content-Type': 'application/json'
              },
              body: JSON.stringify(orderDetails)
-         })
+         });
          history.push(`/orders`);
      };
      
@@ -42,14 +44,14 @@ const Checkout = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{products.name}</td>
-                        <td>{products.model}</td>
+                        <td>{product.name}</td>
+                        <td>{product.model}</td>
                         <td>1</td>
-                        <td>${products.price}</td>
+                        <td>${product.price}</td>
                     </tr> 
                 </tbody>
             </table>
-            <button onClick={()=>handleCheckout(price)} class="mt-5 btn btn-primary float-right">Checkout</button>
+            <button onClick={()=>handleCheckout('id')} class="mt-5 btn btn-primary float-right">Checkout</button>
         </div>
     );
 };

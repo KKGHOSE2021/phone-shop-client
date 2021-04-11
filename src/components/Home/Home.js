@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../Product/Product';
-import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
 
 const Home = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:5000/products')
+        fetch('https://still-chamber-54706.herokuapp.com/products')
         .then(res=>res.json())
         .then(data=>setProducts(data))
     }, [products])
@@ -17,7 +15,7 @@ const Home = () => {
         <div className="container">
             <div className="row">
                 {
-                    products.length === 0 && <CircularProgress color="primary" align="justify"/>                    
+                products.length === 0 && <CircularProgress color="primary" alignItems="center" justifyContent="center"/>                    
                 }                
                 {products.map(product => <Product product={product}/>)}                
             </div>

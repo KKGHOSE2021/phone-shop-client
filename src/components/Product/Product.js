@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Product.css';
-import { Link } from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
 
 const Product = (props) => {
-    const {name, model, price, imageUrl } = props.product;    
+    const {_id, name, model, price, imageUrl } = props.product;        
     const history = useHistory();
-    const handleBuy = (price) =>{
-        history.push(`/checkout/${price}`);
+    const handleBuy = (id) =>{               
+        history.push(`/checkout/${id}`);
     }
     
     return (
@@ -19,7 +18,7 @@ const Product = (props) => {
                         <p class="card-text text-primary fw-bolder fs-1">{model}</p>
                         <div className="d-flex justify-content-between"> 
                         <h5 class="card-title">${price}</h5>
-                        <button onClick={()=>handleBuy(price)} class="btn btn-primary">Buy Now</button>
+                        <button onClick={()=>handleBuy(_id)} class="btn btn-primary">Buy Now</button>
                         </div>
                     </div>
             </div>

@@ -2,8 +2,7 @@ import React, {createContext, useState} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route  
 } from "react-router-dom";
 import Admin from "./components/Admin/Admin";
 import Checkout from './components/Checkout/Checkout';
@@ -39,7 +38,7 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <PrivateRoute path="/checkout/:price">
+          <PrivateRoute path="/checkout/:id">
             <Checkout />
           </PrivateRoute>  
           <Route path="/">
